@@ -6,12 +6,11 @@ using namespace std;
 bool Increase(char * str)
 {
     int len = strlen(str);
-    int index = len;
+    int index = len - 1;
     bool c = false;
     while(index >= 0){
         if((str[index] + 1) <= '9'){
             *(str + index) = *(str + index) + 1;
-            printf("%s\n", str);
             c = false;
             break;
         } else {
@@ -38,16 +37,27 @@ void print1ToMaxOfNDigits(int n)
     memset(buf, '0', n+1);
     buf[n] = '\0';
 
-    printf("%s\n", buf);
-    Increase(buf);
-    printf("%s\n", buf);
-    // while(Increase(buf))
-    // {
-    //     printf("%s\n", buf);
-    // }
+    while(Increase(buf))
+    {
+        printf("%s\t", buf);
+    }
 }
 
-int main()
+int main(int argc, char * argv[])
 {
-    print1ToMaxOfNDigits(3);
+    if(argc != 2)
+    {
+        printf("usage: %s <n>\n", argv[0]);
+        return -1;
+    }
+    print1ToMaxOfNDigits(atoi(argv[1]));
+    // char *pBuf = new char(sizeof(char)*3 + 1);
+    // memset(pBuf, '0', 3+1);
+    // *(pBuf + 3) = '\0';
+
+    // printf("%s\n", pBuf);
+
+    // *(pBuf + 2) = '1';
+
+    // printf("%s\n", pBuf);
 }
