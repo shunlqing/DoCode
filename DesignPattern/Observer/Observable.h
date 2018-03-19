@@ -2,6 +2,8 @@
 #include <vector>
 using namespace std;
 
+class Observer;
+
 class Observable {
 public:
     Observable();
@@ -20,9 +22,13 @@ private:
     vector<Observer*> m_vtObj;
 };
 
-class ConcreteObservable : Observable {
+class ConcreteObservable :public Observable {
 public:
+    ConcreteObservable();
+    ~ConcreteObservable();
 
+    virtual int getState();
+    virtual void setState(int i);
 private:
     int m_State;
 };

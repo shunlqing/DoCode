@@ -1,3 +1,4 @@
+#include "Observer.h"
 #include "Observable.h"
 
 Observable::Observable()
@@ -10,7 +11,7 @@ Observable::~Observable()
 
 }
 
-void Observable::attach(Obserser *p_Observer)
+void Observable::attach(Observer *p_Observer)
 {
     m_vtObj.push_back(p_Observer);
 }
@@ -36,3 +37,23 @@ void Observable::notify()
                 (*it)->update(this);
             }  
 } 
+
+ConcreteObservable::ConcreteObservable()
+{
+    m_State = 0;
+}
+
+ConcreteObservable::~ConcreteObservable()
+{
+
+}
+
+int ConcreteObservable::getState()
+{
+    return m_State;
+}
+
+void ConcreteObservable::setState(int i)
+{
+    m_State = i;
+}

@@ -1,4 +1,5 @@
 #include <iostream>
+using namespace std;
 
 class Observable; //前向声明
 
@@ -11,8 +12,8 @@ public:
 
 class ConcreteObserver : public Observer {
 public:
-    ConcreteObserver();
-    virtual ConcreteObserver();
+    ConcreteObserver(string name);
+    virtual ~ConcreteObserver();
     virtual void update(Observable * ob);
 
 private:
